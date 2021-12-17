@@ -1,15 +1,15 @@
 const core = require('@actions/core'),
       exec = require('@actions/exec'),
       tool = require('@actions/tool-cache'),
-      path = require('path');
-const child_process = require('child_process');
+      path = require('path'),
+      child_process = require('child_process');
 
 async function run() {
     try {
 
         const version = core.getInput('version');
         //const vsixInst = '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\Common7\\IDE\\VSIXInstaller.exe"';
-		const vsixInst = '"C:\\Program Files (x86)\\Microsoft Visual Studio\\Installer\\resources\\app\\ServiceHub\\Services\\Microsoft.VisualStudio.Setup.Service\\VSIXInstaller.exe"';
+        //const vsixInst = '"C:\\Program Files (x86)\\Microsoft Visual Studio\\Installer\\resources\\app\\ServiceHub\\Services\\Microsoft.VisualStudio.Setup.Service\\VSIXInstaller.exe"';
         const toolUrl = 'https://github.com/EWSoftware/SHFB/releases/download/' + version + '/SHFBInstaller_' + version + '.zip';
         const shfbRoot = 'C:\\Program Files (x86)\\EWSoftware\\Sandcastle Help File Builder\\';
         const home = process.env.GITHUB_WORKSPACE;
@@ -53,7 +53,7 @@ async function run() {
 		//options.timeout = 4 * 60 * 1000;
 		//options.stdio = 'inherit';
 
-        await exec.exec(vsixInst, ['/q', '/a', '/logFile:vsixinst.log', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], { cwd: instFolder});
+        //await exec.exec(vsixInst, ['/q', '/a', '/logFile:vsixinst.log', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], { cwd: instFolder});
 
         //await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], { cwd: instFolder});
 
